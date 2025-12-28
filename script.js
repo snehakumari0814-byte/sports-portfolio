@@ -455,6 +455,24 @@ function renderFanMessages() {
   }
 }
 
+// ----- SEND FAN MESSAGE TO BACKEND -----
+function sendFanToBackend(name, message, location) {
+  const API_URL = "http://127.0.0.1:5000/api/fan-message";
+
+  fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, message, location })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Backend response:", data);
+    })
+    .catch(err => {
+      console.error("Could not reach backend:", err);
+    });
+}
+
 function setupFanForm() {
   const form = document.getElementById("fanForm");
   if (!form) return;
@@ -477,6 +495,9 @@ function setupFanForm() {
       createdAt: Date.now()
     });
     saveStoredFans(current);
+
+    // Send also to backend API
+    sendFanToBackend(name, message, location);
 
     form.reset();
     renderFanMessages();
