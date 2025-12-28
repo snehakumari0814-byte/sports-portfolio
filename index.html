@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>MS Dhoni | Cricket Legend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Leaflet CSS for map -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    crossorigin=""
+  />
+</head>
+<body>
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="logo">MS Dhoni</div>
+    <nav>
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#timeline" data-i18n="nav_career">Career</a>
+      <a href="#personal">Personal</a>
+      <a href="#stats" data-i18n="nav_stats">Stats</a>
+      <a href="#media" data-i18n="nav_media">Media</a>
+      <a href="#map-section">Map</a>
+      <a href="#fans" data-i18n="nav_fans">Fans</a>
+    </nav>
+
+    <div class="navbar-right">
+      <!-- Theme toggle -->
+      <button id="themeToggle" class="theme-toggle" type="button">
+        <span class="theme-icon theme-icon-dark">🌙</span>
+        <span class="theme-icon theme-icon-light">☀️</span>
+      </button>
+
+      <!-- Language switcher -->
+      <div class="lang-switch">
+        <button type="button" data-lang="en" class="lang-btn active">EN</button>
+        <button type="button" data-lang="hi" class="lang-btn">हिंदी</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Home -->
+  <section id="home" class="section hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-i18n="hero_title">Mahendra Singh Dhoni</h1>
+      <p data-i18n="hero_subtitle">
+        Former India captain, legendary finisher and wicket-keeper who led India to all three ICC white-ball trophies.
+      </p>
+      <div class="counters">
+        <div class="counter-box">
+          <span class="counter" data-target="3">0</span>
+          <span class="label" data-i18n="hero_counter_icc">ICC Trophies (WT20, WC, CT)</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter" data-target="5">0</span>
+          <span class="label" data-i18n="hero_counter_ipl">IPL Titles as Captain</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter" data-target="17266">0</span>
+          <span class="label" data-i18n="hero_counter_runs">International Runs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Timeline -->
+  <section id="timeline" class="section timeline">
+    <h2 data-i18n="timeline_heading">Career Timeline</h2>
+    <div class="timeline-container">
+      <ul class="timeline-list" id="timelineList"></ul>
+      <div class="timeline-details" id="timelineDetails">
+        <h3>Click an event</h3>
+        <p>Timeline details will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Life -->
+  <section id="personal" class="section personal">
+    <h2>Personal Life</h2>
+    <div class="personal-grid">
+      <div class="personal-card">
+        <h3>Family & Roots</h3>
+        <p>
+          Mahendra Singh Dhoni was born on 7 July 1981 in Ranchi (then in Bihar, now Jharkhand) in a Hindu Rajput family. [web:222][web:229]
+        </p>
+        <p>
+          His parents are Pan Singh and Devaki Devi, and he is the youngest of three siblings, with an elder brother Narendra and sister Jayanti. [web:222][web:235]
+        </p>
+      </div>
+
+      <div class="personal-card">
+        <h3>Home & Lifestyle</h3>
+        <p>
+          Dhoni lives at his farmhouse “Kailashpati” on the outskirts of Ranchi, a sprawling 7‑acre property designed as a quiet retreat for his family. [web:284][web:286]
+        </p>
+        <p>
+          The farmhouse features large lawns, a gym, indoor sports spaces and a special garage for his cars and bikes. [web:284][web:286]
+        </p>
+      </div>
+
+      <div class="personal-card">
+        <h3>Wife & Daughter</h3>
+        <p>
+          He married Sakshi Singh Rawat on 4 July 2010 in Dehradun; the couple have a daughter, Ziva, born in February 2015. [web:222][web:239]
+        </p>
+        <p>
+          Sakshi helps manage Dhoni’s off‑field commitments, while Ziva often appears with him in social media clips from their Ranchi home. [web:239][web:284]
+        </p>
+      </div>
+
+      <div class="personal-card">
+        <h3>Interests Beyond Cricket</h3>
+        <p>
+          Dhoni is a passionate automotive enthusiast with a large collection of superbikes and vintage cars at his Ranchi farmhouse. [web:222][web:284]
+        </p>
+        <p>
+          He also enjoys football and other sports, and is known for keeping a low‑profile, calm lifestyle away from the spotlight. [web:222][web:239]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats & Achievements -->
+  <section id="stats" class="section stats">
+    <h2 data-i18n="stats_heading">Stats & Achievements</h2>
+    <div class="stat-charts">
+      <div class="stat-item">
+        <span class="stat-label">International Runs</span>
+        <div class="stat-bar">
+          <div class="stat-fill" style="--value: 90%;">17,266</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">ODI Batting Average</span>
+        <div class="stat-bar">
+          <div class="stat-fill" style="--value: 80%;">50.57</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">International Dismissals (WK)</span>
+        <div class="stat-bar">
+          <div class="stat-fill" style="--value: 85%;">829</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Matches as Captain (all formats)</span>
+        <div class="stat-bar">
+          <div class="stat-fill" style="--value: 75%;">332</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Gallery -->
+  <section id="media" class="section media">
+    <h2 data-i18n="media_heading">Media Gallery</h2>
+    <div class="media-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="match">Matches</button>
+      <button class="filter-btn" data-filter="trophy">Trophies</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+    </div>
+    <div class="media-grid" id="mediaGrid"></div>
+  </section>
+
+  <!-- Matches Map -->
+  <section id="map-section" class="section">
+    <h2>Iconic Matches Map</h2>
+    <p style="margin-bottom:1rem;font-size:0.9rem;">
+      Zoom and click on markers to see memorable Dhoni matches.
+    </p>
+    <div id="matchesMap"></div>
+  </section>
+
+  <!-- Social & Fans -->
+  <section id="fans" class="section fans">
+    <h2 data-i18n="fans_heading">Social & Fan Zone</h2>
+    <div class="fans-grid">
+      <!-- Social card with icons -->
+      <div class="social-links">
+        <h3 data-i18n="fans_follow">Follow Mahendra Singh Dhoni</h3>
+        <ul>
+          <li>
+            <a href="https://www.instagram.com/mahi7781" target="_blank">
+              <span class="social-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.51 4.51 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-2.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="social-text">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.chennaisuperkings.com" target="_blank">
+              <span class="social-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 4.5 12 2l8 2.5v7.2c0 4.4-3.1 8.4-8 10.3-4.9-1.9-8-5.9-8-10.3z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="social-text">Chennai Super Kings</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.bcci.tv" target="_blank">
+              <span class="social-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M7 7c3 3 7 3 10 0" stroke-width="1.2" fill="none"></path>
+                  <path d="M7 17c3-3 7-3 10 0" stroke-width="1.2" fill="none"></path>
+                </svg>
+              </span>
+              <span class="social-text">BCCI</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fan form card -->
+      <div class="fan-form">
+        <h3 data-i18n="fans_leave_msg">Leave a Message</h3>
+        <p class="fan-form-subtitle">
+          Tell the world what Dhoni means to you. Your note will appear in the fan wall below.
+        </p>
+        <form id="fanForm">
+          <div class="fan-input-row">
+            <input
+              type="text"
+              id="fanName"
+              placeholder="Your name"
+              required
+              data-i18n-placeholder="fans_name_placeholder"
+            >
+            <input
+              type="text"
+              id="fanLocation"
+              placeholder="City / Country (optional)"
+            >
+          </div>
+          <textarea
+            id="fanMessage"
+            placeholder="Your message for Mahendra Singh Dhoni"
+            required
+            data-i18n-placeholder="fans_msg_placeholder"
+          ></textarea>
+          <button type="submit" data-i18n="fans_submit">Submit</button>
+        </form>
+        <p class="fan-hint">Messages are stored only in this browser (no backend).</p>
+      </div>
+
+      <!-- Fan wall card -->
+      <div class="fan-wall">
+        <div class="fan-wall-header">
+          <h3>Fan Wall</h3>
+          <span id="fanCount" class="fan-count">0 messages</span>
+        </div>
+        <ul id="fanMessages" class="fan-messages-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Media Modal -->
+  <div class="modal" id="mediaModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS for map -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
